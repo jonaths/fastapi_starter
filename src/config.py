@@ -5,7 +5,7 @@ from decouple import config
 
 APP_ENV = config("APP_ENV", default="production")
 PORT = config("PORT", cast=int, default=8000)
-DATABASE_URL = config("DATABASE_URL", default="sqlite://db.sqlite3")
+DATABASE_URL = config("DATABASE_URL_VERCEL", default="sqlite://db.sqlite3")
 
 # ---------------------------------------------------
 # 2. Nivel de logging según entorno
