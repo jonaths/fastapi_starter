@@ -1,6 +1,7 @@
 # src/main.py
 
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from tortoise import Tortoise
 from src.config import DATABASE_URL, APP_ENV, logger
 from src.controllers.user_controller import router as user_router
@@ -12,6 +13,16 @@ app = FastAPI(
     description="API con FastAPI y Tortoise ORM",
     openapi_url="/openapi.json",
     docs_url="/docs" if APP_ENV == "development" else None,
+)
+
+# Nota: esto es demostrativo, no debiera usarse en producción porque se le indica al navegador
+# que puede recibir peticiones de cualquier lugar, lo cuál no es muy seguro.
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # permite cualquier origen (incluido file:// y null)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
