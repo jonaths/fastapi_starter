@@ -7,6 +7,9 @@ APP_ENV = config("APP_ENV", default="production")
 PORT = config("PORT", cast=int, default=8000)
 DATABASE_URL = config("DATABASE_URL_VERCEL", default="sqlite://db.sqlite3")
 
+
+JWT_SECRET_KEY = config("JWT_SECRET_KEY", "CAMBIA_POR_ALGO_SUPER_SECRETO")
+
 # ---------------------------------------------------
 # 2. Nivel de logging según entorno
 # ---------------------------------------------------

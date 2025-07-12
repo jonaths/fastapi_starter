@@ -33,7 +33,6 @@ class UserService:
             raise ValueError("Edad invalida")
         return age_group
 
-
     @staticmethod
     async def get_all() -> List[User]:
         """
@@ -76,3 +75,8 @@ class UserService:
             ...     print("Error al crear usuario")
         """
         return await User.create(name=name, email=email)
+
+    @staticmethod
+    async def get_by_email(email: str):
+        from src.models import User
+        return await User.filter(email=email).first()
