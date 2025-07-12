@@ -111,7 +111,7 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
             detail="Usuario o contraseña incorrectos",
             headers={"WWW-Authenticate": "Bearer"},
         )
-
+    # TODO: habiendo recuperado el usuario, validar que la contraseña coincide con la contraseña almacenada.
     expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     to_encode = {"sub": user.email, "exp": expire}  # payload del JWT
     token = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
